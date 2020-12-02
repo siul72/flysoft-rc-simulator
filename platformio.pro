@@ -29,10 +29,9 @@ DEFINES += "ARDUINO_ARCH_AVR"
 DEFINES += "ARDUINO=10808"
 DEFINES += "__AVR_ATmega328P__"
 
-OTHER_FILES += platformio.ini
+OTHER_FILES += platformio.ini README.md
 
-HEADERS += src/rcmanager.h
-SOURCES += src/rcmanager.cpp
-SOURCES += src/main.cpp
+HEADERS += src/rcmanager.h src/utils.h
+SOURCES += src/rcmanager.cpp src/utils.cpp src/main.cpp
 
 CONFIG += c++11
