@@ -8,9 +8,14 @@ else {
 
 INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/include"
 INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/src"
+INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/Queue/src"
+INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/TaskScheduler/src"
+INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/ArduinoSTL/src"
 INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/SoftwareSerial"
 INCLUDEPATH += "$${HOMEDIR}/.platformio/packages/framework-arduino-avr/cores/arduino"
 INCLUDEPATH += "$${HOMEDIR}/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs"
+INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/AsyncMqttClient-esphome/src"
+INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/ESP8266Ping/src"
 INCLUDEPATH += "$${HOMEDIR}/workspace/ksoft-rc-simulator/.pio/libdeps/nanoatmega328/SoftwareSerialM"
 INCLUDEPATH += "$${HOMEDIR}/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src"
 INCLUDEPATH += "$${HOMEDIR}/.platformio/packages/framework-arduino-avr/libraries/HID/src"
@@ -29,9 +34,12 @@ DEFINES += "ARDUINO_ARCH_AVR"
 DEFINES += "ARDUINO=10808"
 DEFINES += "__AVR_ATmega328P__"
 
-OTHER_FILES += platformio.ini README.md
+OTHER_FILES += platformio.ini
 
-HEADERS += src/rcmanager.h src/utils.h
-SOURCES += src/rcmanager.cpp src/utils.cpp src/main.cpp
+HEADERS += src/rcmanager.h
+SOURCES += src/rcmanager.cpp
+HEADERS += src/utils.h
+SOURCES += src/main.cpp
+SOURCES += src/utils.cpp
 
 CONFIG += c++11
