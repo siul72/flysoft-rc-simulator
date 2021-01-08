@@ -54,14 +54,14 @@ void serialThread() {
     s.trim();
     frame.concat(s);
     frame.concat(FRAME_END);
-   
+
     myQueue.push_back(frame);
     sprintf(msg, "push:%s", frame.c_str());
     Serial.println(msg);
     parseRxTask.enableIfNot();
- 
+
   }
- 
+
 }
 
 void function_set_single_value(String payload){
@@ -76,7 +76,7 @@ void function_set_single_value(String payload){
 	RcManager::rcChannels[index] = value;
     sprintf(msg, "set channel %d=%d", index, value);
     Serial.println(msg);
-	
+
 }
 
 void function_take_off(){
@@ -86,7 +86,7 @@ void function_take_off(){
 	RcManager::rcChannels[3] = 1000;
 	sprintf(msg, "TAKE OFF");
     Serial.println(msg);
-	
+
 }
 
 void function_rest(){
@@ -95,12 +95,11 @@ void function_rest(){
 	RcManager::rcChannels[2] = 1500;
 	RcManager::rcChannels[3] = 1500;
 	sprintf(msg, "REST");
-    Serial.println(msg);	
+    Serial.println(msg);
 
 }
 
 void parseReceivedFrame(){
-
   Serial.println(">parseReceivedFrame");
   bool x = myQueue.size();
   sprintf(msg, "pop=%d", x);
@@ -134,12 +133,12 @@ void parseReceivedFrame(){
 	  Serial.println(msg);
       continue;
     }
-	
+
 	//function
 	sprintf(msg, "FUNCTION %s", myFunctionList[3].c_str());
 	Serial.println(msg);
 	int function = atoi(myFunctionList[3].c_str());
-	 
+
 	switch(function){
 			case 1:
 				function_set_single_value(myFunctionList[5].c_str());
@@ -150,14 +149,14 @@ void parseReceivedFrame(){
 			case 3:
 				function_rest();
 			break;
-			 
+
 			default:
 				sprintf(msg, "FUNCTION %d unsuported", function);
 				Serial.println(msg);
 				continue;
 	}
-	
-   
+
+
 
   }
   parseRxTask.disable();
@@ -177,7 +176,7 @@ void frameThread(){
 	} else {
 		print_count++;
 	}
-    
+
     digitalWrite(LED_WATCHDOG, !digitalRead(LED_WATCHDOG));
 
 }
